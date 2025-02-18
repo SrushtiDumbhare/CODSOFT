@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srushti Dumbhare - Web Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: rgb(61, 179, 61);
+            --secondary-color: rgb(20, 142, 20);
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(rgba(238, 238, 238, 0.8), rgba(254, 251, 251, 0.8)),
+                url('https://th.bing.com/th/id/OIP.WlSNSPi3dtAf5vW7rNnThQHaEg?rs=1&pid=ImgDetMain') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 2rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar:hover {
+            width: 300px;
+        }
+
+        .profile-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: block;
+            border: 3px solid var(--primary-color);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .profile-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .sidebar h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover {
+            background: var(--primary-color);
+            transform: translateX(10px);
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h1,
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .animated-text {
+            overflow: hidden;
+            border-right: 0.15em solid var(--primary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation:
+                typing 3.5s steps(30, end),
+                blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--primary-color)
+            }
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .project {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .service {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 170, 255, 0.2);
+        }
+
+        button {
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .get-in-touch {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: #e9e7e7;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .get-in-touch:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .about-image {
+            float: right;
+            margin: 0 0 1rem 1rem;
+            border-radius: 8px;
+            max-width: 320px;
+            height: auto;
+        }
+
+        .resume-download {
+            margin-top: 1rem;
+        }
+
+        .resume-download a {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .resume-download a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-radius: 7px;
+        }
+
+        footer nav {
+            margin-top: 0.5rem;
+        }
+
+        footer nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer nav a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 770px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .get-in-touch {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .about-image {
+                float: none;
+                display: block;
+                margin: 1rem auto;
+                width: 80px;
+
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                alt="Srushti Dumbhare" class="profile-icon">
+            <h2>Srushti Dumbhare</h2>
+            <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                    <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="home">
+                <h1>Web Developer & Designer</h1>
+                <p class="animated-text">Hello, I'm Srushti Dumbhare</p>
+            </section>
+
+            <section id="about">
+                <h2>About Me</h2>
+                <img src="https://example.com/srushti photo.jpg" alt="Srushti Dumbhare">
+              
+               <p>I'm an aspiring web developer, excited to start my journey in building beautiful, functional, and
+                    user-friendly websites. Passionate about coding and eager to learn, I'm exploring both front-end and
+                    back-end technologies to create seamless web experiences. My goal is to grow my skills and
+                    contribute to innovative digital solutions.</p>
+                <h3>Skills:</h3>
+                <div class="skills">
+                    <span class="skill">HTML5</span>
+                    <span class="skill">CSS3</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">React</span>
+                    <span class="skill">Node.js</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">C++</span>
+                    <span class="skill">SQL</span>
+                    <span class="skill">Flutter</span>
+                    <span class="skill">Git</span>
+                </div>
+            </section>
+
+            <section id="portfolio">
+                <h2>My Portfolio</h2>
+                <div class="projects">
+                    <div class="project">
+                        <img src="https://www.tidio.com/wp-content/uploads/chatbot-ui-evolution-1200x1053.png"
+                            alt="AI-Powered Chatbot">
+                        <h3>AI-Powered Chatbot</h3>
+                        <p>An intelligent chatbot using natural language processing for customer support</p>
+                    </div>
+                    <div class="project">
+                        <img src="https://freefrontend.com/assets/img/bootstrap-to-do-lists/bootstrap-4-todo-task-list-with-badges.png"
+                            alt="Task Manager">
+                        <h3>Task Manager / To-Do List</h3>
+                        <p>A feature-rich task management application with user authentication</p>
+                    </div>
+                    <div class="project">
+                        <img src="https://th.bing.com/th/id/OIP.j372EYgZCr_NpWx3p2XWYAHaEK?rs=1&pid=ImgDetMain"
+                            alt="Interactive Quiz App">
+                        <h3>Interactive Quiz App</h3>
+                        <p>An engaging quiz application with various categories and difficulty levels</p>
+                    </div>
+                    <div class="project">
+                        <img src="https://static.showit.co/800/-MCXNwDORsexEi0g8cd2zg/91142/screenshot_2023-03-10_at_12_49_35_pm.png"
+                            alt="Digital Resume">
+                        <h3>Digital Resume</h3>
+                        <p>An interactive and visually appealing online resume/CV builder</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="services">
+                <h2>My Services</h2>
+                <div class="services">
+                    <div class="service">
+                        <i class="fas fa-code"></i>
+                        <h3>Web Development</h3>
+                        <p>Custom website development using the latest technologies</p>
+                    </div>
+                    <div class="service">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Web Design</h3>
+                        <p>Creative and responsive designs that engage users</p>
+                    </div>
+                    <div class="service">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile-First Development</h3>
+                        <p>Ensuring your website looks great on all devices</p>
+                    </div>
+                    <div class="service">
+                        <i class="fas fa-search"></i>
+                        <h3>SEO Optimization</h3>
+                        <p>Improving your website's visibility in search engines</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Me</h2>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <p>Email: srushtid345@gmail.com</p>
+                    <p>Phone: 8467898767</p>
+                </div>
+                <div class="resume-download">
+                    <a href="resume.html" download>Download Resume (PDF)</a>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.github.com" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.telegram.com" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+    <a href="#contact" class="get-in-touch">
+        <i class="fas fa-comments"></i>
+    </a>
+    <footer>
+        <p>&copy; 2023 Srushti Dumbhare. All rights reserved.</p>
+        <nav>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </nav>
+    </footer>
+</body>
+
+</html>
